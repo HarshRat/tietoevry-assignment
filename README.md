@@ -1,69 +1,83 @@
-# React + TypeScript + Vite
+# Employment Form Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based employment information form that allows users to input employment details, calculate total income, and export the data as JSON.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Employment Data Collection**: Capture employer name, annual income, employment dates, and notes
+- **Income Calculation**: Automatically calculates total income based on employment duration (excluding leap days)
+- **Form Validation**: Comprehensive validation using Zod schemas with custom error messages
+- **Data Export**: Export employment data as a JSON file
+- **Responsive Design**: Mobile-friendly UI using Material-UI components
+- **Type Safety**: Full TypeScript support with strict mode enabled
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19.1.1** - UI framework
+- **TypeScript** - Type safety and better developer experience
+- **Material-UI (MUI)** - UI component library
+- **React Hook Form** - Form state management
+- **Zod** - Schema validation
+- **Vite** - Build tool and development server
+- **ESLint** - Code linting
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd tietoevry-assignment
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies:
+```bash
+yarn install
 ```
+
+3. Start the development server:
+```bash
+yarn dev
+```
+
+The application will be available at `http://localhost:5173`
+
+## Available Scripts
+
+- `yarn dev` - Start development server
+- `yarn build` - Build for production
+- `yarn lint` - Run ESLint
+- `yarn preview` - Preview production build
+
+## Form Validation Rules
+
+- **Employer's Name**: Required field
+- **Annual Gross Income**: Required, must be a positive number
+- **Employment Start Date**: Required, cannot be a future date
+- **Employment End Date**: Optional, must be after start date if provided
+- **Notes**: Optional, maximum 500 characters
+
+## Income Calculation
+
+The application calculates total income based on the employment period:
+- Uses the actual number of days worked
+- Formula: `(Annual Income / 365) * Days Worked`
+- Displays the result with proper currency formatting
+
+## Data Export
+
+Users can export their employment data as a JSON file containing:
+- All form fields
+- Calculated total income
+- Employment duration in years
+- Export timestamp
+
+## Development
+
+This project uses:
+- Strict TypeScript configuration for type safety
+- ESLint for code quality
+- React Hook Form for efficient form handling
+- Zod for runtime validation
+- Material-UI for consistent styling
