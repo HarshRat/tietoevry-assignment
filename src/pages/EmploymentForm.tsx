@@ -83,10 +83,11 @@ export const EmploymentForm: React.FC = () => {
         employmentEndDate
       );
 
-      // Create export data
+      // Create export data with formatted amounts (no decimals, matching display)
       const exportData = {
         ...data,
-        totalIncome,
+        annualGrossIncome: formatCurrency(parseFloat(data.annualGrossIncome.replace(/[,$]/g, ''))),
+        totalIncome: formatCurrency(totalIncome),
         employmentDuration: calculatedYears,
         exportDate: new Date().toISOString(),
       };

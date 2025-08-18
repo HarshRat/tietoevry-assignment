@@ -7,6 +7,8 @@ export const ERROR_MESSAGES = {
   EMPLOYER_NAME_REQUIRED: "Employer name is required",
   EMPLOYER_NAME_MIN_LENGTH: "Employer name must be at least 2 characters",
   EMPLOYER_NAME_MAX_LENGTH: "Employer name must be less than 100 characters",
+  EMPLOYER_NAME_CHARACTERS_ONLY:
+    "Employer name can only contain letters and spaces",
 
   // Annual Income Errors
   ANNUAL_INCOME_REQUIRED: "Annual gross income is required",
@@ -40,5 +42,3 @@ export const SUCCESS_MESSAGES = {
   FORM_SAVED: "Form saved successfully! File has been downloaded.",
   FILE_DOWNLOADED: "Employment data file downloaded successfully.",
 } as const;
-
-

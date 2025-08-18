@@ -7,10 +7,18 @@ export const formatAmount = (value: string): string => {
   // Remove all non-digit characters except decimal point
   const numericValue = value.replace(/[^\d.]/g, "");
 
+  // Handle empty or invalid input
+  if (!numericValue || numericValue === ".") {
+    return "";
+  }
+
   // Handle decimal point
   const parts = numericValue.split(".");
   let integerPart = parts[0];
   const decimalPart = parts[1];
+
+  // Remove leading zeros but keep at least one digit
+  integerPart = integerPart.replace(/^0+/, "") || "0";
 
   // Add commas for thousands (US format: 100,000 not 1,00,000)
   integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
